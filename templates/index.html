@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Website Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
+</head>
+
+<body>
+    <div class="container">
+        <h2> Website Summarizer</h2>
+        <form action="/summarize" method="POST">
+            <input type="text" name="url" placeholder="Enter a URL" value="{{ url or '' }}" required>
+            <button type="submit">Summarize</button>
+        </form>
+
+        {% if summary %}
+        <div class="summary-box">
+            <h2>Website Summary</h2>
+            <div class="summary-content">
+                {{ summary | safe }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
